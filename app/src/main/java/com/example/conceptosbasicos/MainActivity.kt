@@ -10,6 +10,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -47,7 +48,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             ConceptosBasicosTheme {
 //                app1()
-                tareas()
+//                tareas()
+                cuadricula()
             }
         }
     }
@@ -133,7 +135,7 @@ fun app1(){
     }
 
 }
-@Preview
+//@Preview
 @Composable
 fun tareas(){
     Box (
@@ -174,4 +176,66 @@ fun tareas(){
 
     }
 
+
+
+}
+@Preview(showBackground = true, name = "Mi tarjeta")
+@Composable
+fun cuadricula(){
+    Column(Modifier.fillMaxSize()) {
+        Row(Modifier.weight(1f)) {
+            ComposableInfoCard(
+                title = "Text composable",
+                description = "Displays text and follows the recommended Material Design guidelines.",
+                backgroundColor = Color(0xFF3E5902),
+                modifier = Modifier.weight(1f)
+            )
+            ComposableInfoCard(
+                title = "Image composable",
+                description = "Creates a composable that lays out and draws a given Painter class object.",
+                backgroundColor = Color(0xFF708C08),
+                modifier = Modifier.weight(1f)
+            )
+        }
+        Row(Modifier.weight(1f)) {
+            ComposableInfoCard(
+                title = "Row composable",
+                description = "A layout composable that places its children in a horizontal sequence.",
+                backgroundColor = Color(0xFF708C08),
+                modifier = Modifier.weight(1f)
+            )
+            ComposableInfoCard(
+                title = "Column composable",
+                description = "A layout composable that places its children in a vertical sequence.",
+                backgroundColor = Color(0xFF3E5902),
+                modifier = Modifier.weight(1f)
+            )
+        }
+    }
+}
+@Composable
+fun ComposableInfoCard(
+    title: String,
+    description: String,
+    backgroundColor: Color,
+    modifier: Modifier = Modifier
+) {
+    Column(
+        modifier = modifier
+            .fillMaxSize()
+            .background(backgroundColor)
+            .padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Text(
+            text = title,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(bottom = 16.dp)
+        )
+        Text(
+            text = description,
+            textAlign = TextAlign.Justify
+        )
+    }
 }
