@@ -8,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -16,6 +17,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text2.input.TextFieldCharSequence
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -28,6 +30,7 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.VerticalAlignmentLine
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -43,12 +46,13 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             ConceptosBasicosTheme {
-                app1()
+//                app1()
+                tareas()
             }
         }
     }
 }
-@Preview
+//@Preview
 @Composable
 fun app1(){
     Column (
@@ -125,6 +129,48 @@ fun app1(){
 
         )
 
+
+    }
+
+}
+@Preview
+@Composable
+fun tareas(){
+    Box (
+        modifier = Modifier
+            .background(Color.White)
+            .fillMaxSize(),
+        //Alineacion vertical y horizontal centrada
+        contentAlignment = Alignment.Center
+
+    ){
+        Column (
+            horizontalAlignment = Alignment.CenterHorizontally,
+        )
+        {
+            Image(painter = painterResource(id = R.drawable.check), contentDescription = "Check", modifier = Modifier
+                .size(200.dp)
+
+            )
+
+            Text(
+                text = "Terminaste todas tus tareas",
+                color = Color(0xFF708C08),
+                fontWeight = FontWeight.Bold,
+                fontSize = 18.sp,
+                modifier = Modifier
+                    .padding(
+                        top = 24.dp,
+                        bottom = 8.dp
+                    )
+            )
+            Text(
+                text = "Buen trabajo!",
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Normal,
+
+            )
+        }
 
     }
 
